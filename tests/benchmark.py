@@ -29,7 +29,7 @@ def run_all_tests(folder=None, verbose=True):
     :param verbose: verbose
     """
     if folder is None:
-        folder = 'TESTDUMP'
+        folder = "TESTDUMP"
     os.environ["ONNXTESTDUMP"] = folder
     os.environ["ONNXTESTDUMPERROR"] = "1"
     os.environ["ONNXTESTBENCHMARK"] = "1"
@@ -78,9 +78,11 @@ def run_all_tests(folder=None, verbose=True):
             runner.run(ts)
 
     from test_utils.tests_helper import make_report_backend
+
     df = make_report_backend(folder, as_df=True)
 
     from pandas import set_option
+
     set_option("display.max_columns", None)
     set_option("display.max_rows", None)
     exfile = os.path.join(folder, "report_backend.xlsx")
