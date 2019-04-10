@@ -155,7 +155,7 @@ class TestOtherLibrariesInPipeline(unittest.TestCase):
             Xd.astype(numpy.float32)[:7], ptsne_knn, model_onnx,
             basename="CustomTransformerTSNEkNN-OneOffArray",
             allow_failure="StrictVersion(onnx.__version__) "
-            "== StrictVersion('1.4.1')")
+                          "== StrictVersion('1.4.1')")
 
         trace_line = []
 
@@ -164,18 +164,17 @@ class TestOtherLibrariesInPipeline(unittest.TestCase):
             return _parse_sklearn_simple_model(scope, model, inputs,
                                                custom_parsers)
 
-        model_onnx = convert_sklearn(ptsne_knn, 'predictable_tsne',
-                                     [('input', FloatTensorType(
-                                         [1, Xd.shape[1]]))],
-                                     custom_parsers={PredictableTSNE:
-                                                     my_parser})
+        model_onnx = convert_sklearn(
+            ptsne_knn, 'predictable_tsne',
+            [('input', FloatTensorType([1, Xd.shape[1]]))],
+            custom_parsers={PredictableTSNE: my_parser})
         assert len(trace_line) == 1
 
         dump_data_and_model(
             Xd.astype(numpy.float32)[:7], ptsne_knn, model_onnx,
             basename="CustomTransformerTSNEkNNCustomParser-OneOffArray",
             allow_failure="StrictVersion(onnx.__version__) "
-            "== StrictVersion('1.4.1')")
+                          "== StrictVersion('1.4.1')")
 
         update_registered_parser(PredictableTSNE, my_parser)
         model_onnx = convert_sklearn(ptsne_knn, 'predictable_tsne',
