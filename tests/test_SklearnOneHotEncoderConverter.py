@@ -7,7 +7,6 @@ import inspect
 from sklearn.preprocessing import OneHotEncoder
 from skl2onnx import convert_sklearn
 from skl2onnx.common.data_types import (
-    FloatTensorType,
     Int64TensorType,
     StringTensorType,
 )
@@ -22,10 +21,11 @@ def one_hot_encoder_supports_string():
 
 class TestSklearnOneHotEncoderConverter(unittest.TestCase):
     def test_model_one_hot_encoder(self):
-        # categorical_features will be removed in 0.22 (this test will fail by then).
-        # FutureWarning: The handling of integer data will change in version 0.22.
-        # Currently, the categories are determined based on the range [0, max(values)],
-        # while in the future they will be determined based on the unique values.
+        # categorical_features will be removed in 0.22 (this test
+        # will fail by then). FutureWarning: The handling of integer
+        # data will change in version 0.22. Currently, the categories
+        # are determined based on the range [0, max(values)], while
+        # in the future they will be determined based on the unique values.
         # If you want the future behaviour and silence this warning,
         # you can specify "categories='auto'".
         model = OneHotEncoder()
@@ -50,7 +50,8 @@ class TestSklearnOneHotEncoderConverter(unittest.TestCase):
         reason="OneHotEncoder does not support strings in 0.19",
     )
     def test_one_hot_encoder_mixed_string_int(self):
-        # categorical_features will be removed in 0.22 (this test will fail by then).
+        # categorical_features will be removed in 0.22
+        # (this test will fail by then).
         data = [
             ["c0.4", "c0.2", 3],
             ["c1.4", "c1.2", 0],
@@ -82,7 +83,8 @@ class TestSklearnOneHotEncoderConverter(unittest.TestCase):
         reason="OneHotEncoder does not support strings in 0.19",
     )
     def test_one_hot_encoder_onecat(self):
-        # categorical_features will be removed in 0.22 (this test will fail by then).
+        # categorical_features will be removed in 0.22
+        # (this test will fail by then).
         data = [["cat"], ["cat"]]
         model = OneHotEncoder(categories="auto")
         model.fit(data)
@@ -102,7 +104,8 @@ class TestSklearnOneHotEncoderConverter(unittest.TestCase):
         reason="OneHotEncoder does not support strings in 0.19",
     )
     def test_one_hot_encoder_twocats(self):
-        # categorical_features will be removed in 0.22 (this test will fail by then).
+        # categorical_features will be removed in 0.22
+        # (this test will fail by then).
         data = [["cat2"], ["cat1"]]
         model = OneHotEncoder(categories="auto")
         model.fit(data)

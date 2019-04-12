@@ -19,7 +19,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(1, 1), norm=None)
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         model_onnx = convert_sklearn(vect, "TfidfVectorizer",
                                      [("input", StringTensorType([1, 1]))])
         self.assertTrue(model_onnx is not None)
@@ -28,8 +27,8 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer11-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
     def test_model_tfidf_vectorizer11_empty_string(self):
@@ -41,7 +40,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(1, 1), norm=None)
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         model_onnx = convert_sklearn(vect, "TfidfVectorizer",
                                      [("input", StringTensorType([1, 1]))])
         self.assertTrue(model_onnx is not None)
@@ -51,8 +49,8 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer11EmptyString-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.3.0')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.3.0')",
         )
 
     def test_model_tfidf_vectorizer11_out_vocabulary(self):
@@ -64,7 +62,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(1, 1), norm=None)
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         model_onnx = convert_sklearn(vect, "TfidfVectorizer",
                                      [("input", StringTensorType([1, 1]))])
         self.assertTrue(model_onnx is not None)
@@ -79,8 +76,8 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer11OutVocab-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
     def test_model_tfidf_vectorizer22(self):
@@ -92,7 +89,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(2, 2), norm=None)
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         model_onnx = convert_sklearn(vect, "TfidfVectorizer",
                                      [("input", StringTensorType([1, 1]))])
         self.assertTrue(model_onnx is not None)
@@ -101,15 +97,14 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer22-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
-    def test_model_tfidf_vectorizer12(self):
+    def test_model_tfidf_vectorizer21(self):
         corpus = numpy.array(["AA AA", "AA AA BB"]).reshape((2, 1))
         vect = TfidfVectorizer(ngram_range=(1, 2), norm=None)
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         model_onnx = convert_sklearn(vect, "TfidfVectorizer",
                                      [("input", StringTensorType([1, 1]))])
         self.assertTrue(model_onnx is not None)
@@ -118,8 +113,8 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer22S-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
     def test_model_tfidf_vectorizer12(self):
@@ -131,7 +126,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(1, 2), norm=None)
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         model_onnx = convert_sklearn(vect, "TfidfVectorizer",
                                      [("input", StringTensorType([1, 1]))])
         self.assertTrue(model_onnx is not None)
@@ -140,8 +134,8 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer22-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
     def test_model_tfidf_vectorizer12_normL1(self):
@@ -153,7 +147,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(1, 2), norm="l1")
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         model_onnx = convert_sklearn(vect, "TfidfVectorizer",
                                      [("input", StringTensorType([1, 1]))])
         self.assertTrue(model_onnx is not None)
@@ -162,8 +155,8 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer22L1-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
     def test_model_tfidf_vectorizer12_normL2(self):
@@ -175,7 +168,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(1, 2), norm="l2")
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         model_onnx = convert_sklearn(vect, "TfidfVectorizer",
                                      [("input", StringTensorType([1, 1]))])
         self.assertTrue(model_onnx is not None)
@@ -184,8 +176,8 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer22L2-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
     def test_model_tfidf_vectorizer13(self):
@@ -197,7 +189,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(1, 3), norm=None)
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         model_onnx = convert_sklearn(vect, "TfidfVectorizer",
                                      [("input", StringTensorType([1, 1]))])
         self.assertTrue(model_onnx is not None)
@@ -206,8 +197,8 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer13-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
     def test_model_tfidf_vectorizer11parenthesis_class(self):
@@ -219,7 +210,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(1, 1), norm=None)
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
         extra = {
             TfidfVectorizer: {
                 "sep": [" ", ".", "?", ",", ";", ":", "!", "(", ")"]
@@ -237,9 +227,10 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer11ParenthesisClass-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.0') or "
-            "StrictVersion(onnx.__version__) <= StrictVersion('1.3')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.0') or "
+                          "StrictVersion(onnx.__version__)"
+                          " <= StrictVersion('1.3')",
         )
 
     def test_model_tfidf_vectorizer11_idparenthesis_id(self):
@@ -251,7 +242,6 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
         ]).reshape((4, 1))
         vect = TfidfVectorizer(ngram_range=(1, 1), norm=None)
         vect.fit(corpus.ravel())
-        pred = vect.transform(corpus.ravel())
 
         extra = {
             id(vect): {
@@ -285,8 +275,8 @@ class TestSklearnTfidfVectorizer(unittest.TestCase):
             vect,
             model_onnx,
             basename="SklearnTfidfVectorizer11ParenthesisId-OneOff-SklCol",
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
 

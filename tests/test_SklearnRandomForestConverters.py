@@ -25,34 +25,37 @@ class TestSklearnTreeEnsembleModels(unittest.TestCase):
         model = RandomForestClassifier(n_estimators=3)
         dump_one_class_classification(
             model,
-            allow_failure=
-            "StrictVersion(onnx.__version__) < StrictVersion('1.2') or "
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnx.__version__)"
+                          " < StrictVersion('1.2')"
+                          " or StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
         dump_binary_classification(
             model,
-            allow_failure=
-            "StrictVersion(onnx.__version__) < StrictVersion('1.2') or "
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnx.__version__)"
+                          " < StrictVersion('1.2')"
+                          " or StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
         dump_multiple_classification(
             model,
-            allow_failure=
-            "StrictVersion(onnx.__version__) < StrictVersion('1.2') or "
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnx.__version__)"
+                          " < StrictVersion('1.2')"
+                          " or StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
     def test_random_forest_regressor(self):
         model = RandomForestRegressor(n_estimators=3)
         dump_single_regression(
             model,
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure=("StrictVersion(onnxruntime.__version__)"
+                           " <= StrictVersion('0.2.1')"),
         )
         dump_multiple_regression(
             model,
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
     @unittest.skipIf(not onnx_built_with_ml(),
@@ -61,35 +64,40 @@ class TestSklearnTreeEnsembleModels(unittest.TestCase):
         model = ExtraTreesClassifier(n_estimators=3)
         dump_one_class_classification(
             model,
-            allow_failure=
-            "StrictVersion(onnx.__version__) < StrictVersion('1.2') or "
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnx.__version__)"
+                          " < StrictVersion('1.2') or "
+                          "StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
         dump_binary_classification(
             model,
-            allow_failure=
-            "StrictVersion(onnx.__version__) < StrictVersion('1.2') or "
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure=(
+                "StrictVersion(onnx.__version__) < StrictVersion('1.2') or "
+                "StrictVersion(onnxruntime.__version__)"
+                " <= StrictVersion('0.2.1')"
+            ),
         )
         dump_multiple_classification(
             model,
             # Operator cast-1 is not implemented in onnxruntime
-            allow_failure=
-            "StrictVersion(onnx.__version__) < StrictVersion('1.2') or "
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure=(
+                "StrictVersion(onnx.__version__) < StrictVersion('1.2') or "
+                "StrictVersion(onnxruntime.__version__)"
+                " <= StrictVersion('0.2.1')"
+            ),
         )
 
     def test_extra_trees_regressor(self):
         model = ExtraTreesRegressor(n_estimators=3)
         dump_single_regression(
             model,
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
         dump_multiple_regression(
             model,
-            allow_failure=
-            "StrictVersion(onnxruntime.__version__) <= StrictVersion('0.2.1')",
+            allow_failure="StrictVersion(onnxruntime.__version__)"
+                          " <= StrictVersion('0.2.1')",
         )
 
 
